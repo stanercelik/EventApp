@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ticket_project/Models/EventModel.dart';
 
@@ -28,7 +26,7 @@ class EventView extends StatelessWidget {
         child: Column(
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
                 child: Image(
                   height: 200,
                   width: 400,
@@ -42,16 +40,18 @@ class EventView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    event.eventName,
+                    event.eventName.length > 30
+                        ? "${event.eventName.substring(0, 27)}..."
+                        : event.eventName,
                     style: TextStyles.eventNameTextStyle,
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 8),
+                    margin: const EdgeInsets.only(right: 8),
                     decoration: BoxDecoration(
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(8)),
                     child: Padding(
-                      padding: EdgeInsets.all(6.0),
+                      padding: const EdgeInsets.all(6.0),
                       child: Text(
                         event.eventType,
                         style: TextStyles.eventInfoTextStyle,
@@ -83,8 +83,8 @@ class EventView extends StatelessWidget {
                       year: event.startYear,
                     ),
                     Container(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
+                      padding: const EdgeInsets.all(8),
+                      child: const Text(
                         "-",
                         style: TextStyles.lineTextStyle,
                       ),
@@ -96,27 +96,28 @@ class EventView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 42,
                 ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.grey[400],
-                      borderRadius: BorderRadius.all(Radius.circular(16))),
-                  child: SizedBox(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(16))),
+                  child: const SizedBox(
                     height: 32,
                     width: 1,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 42,
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 8),
+                  margin: const EdgeInsets.only(right: 8),
                   child: Column(
                     children: [
-                      Text("Saat",
-                          style: const TextStyle(
+                      const Text("Saat",
+                          style: TextStyle(
                               color: Colors.grey, fontWeight: FontWeight.w300)),
                       Text(
                         event.eventTime,
