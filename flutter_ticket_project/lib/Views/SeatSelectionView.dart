@@ -1,75 +1,56 @@
 import 'package:flutter/material.dart';
 
-class SeatSelectionScreen extends StatefulWidget {
-  const SeatSelectionScreen({super.key});
+class SeatSelectionView extends StatefulWidget {
+  final List<String> secilenler;
+
+  const SeatSelectionView({super.key, required this.secilenler});
 
   @override
-  _SeatSelectionScreenState createState() => _SeatSelectionScreenState();
+  State<SeatSelectionView> createState() => _SeatSelectionViewState();
 }
 
-class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
+class _SeatSelectionViewState extends State<SeatSelectionView> {
   List<String> selectedSeats = [];
-
+  List<String> alreadySelectedSeats = [];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Seat Selection"),
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          buildSeatContainer(4),
-          const SizedBox(width: 16),
-          buildSeatContainer(8),
-          const SizedBox(width: 16),
-          buildSeatContainer(4),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SelectedSeatsScreen(selectedSeats),
-            ),
-          );
-        },
-        child: const Icon(Icons.shopping_cart),
-      ),
-    );
+    return buildSeatContainer();
   }
 
-  Widget buildSeatContainer(int columnCount) {
+  Widget buildSeatContainer() {
     return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-      ),
+      margin: const EdgeInsets.all(8),
+      width: double.infinity,
+      height: 260,
+      decoration: const BoxDecoration(),
       child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: columnCount,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 8,
+          crossAxisSpacing: 4.0, // Sütunlar arasındaki boşluk
+          mainAxisSpacing: 4.0, // Satırlar arasındaki boşluk
         ),
-        itemCount: 6,
+        itemCount: 40,
         itemBuilder: (context, index) {
-          String seatNum = "$columnCount-${index + 1}";
+          String seatNum = "${index + 1}";
           Color seatColor = Colors.grey;
 
           if (selectedSeats.contains(seatNum)) {
             seatColor = Colors.blue;
-          } else if (seatNum.startsWith("4")) {
+          } else if (seatNum.startsWith("2")) {
             seatColor = Colors.red;
+            alreadySelectedSeats.add(seatNum);
           }
 
           return GestureDetector(
             onTap: () {
               setState(() {
-                if (selectedSeats.contains(seatNum)) {
-                  selectedSeats.remove(seatNum);
-                } else {
+                if ((!selectedSeats.contains(seatNum)) &&
+                    !(alreadySelectedSeats.contains(seatNum))) {
+                  widget.secilenler.add(seatNum);
                   selectedSeats.add(seatNum);
+                } else if (selectedSeats.contains(seatNum)) {
+                  selectedSeats.remove(seatNum);
+                  widget.secilenler.remove(seatNum);
                 }
               });
             },
@@ -100,42 +81,17 @@ class CustomSeat extends StatelessWidget {
           color: seatColor,
           size: 42,
         ),
-        Positioned(left: 17, top: 4, child: Text(seatNum)),
+        Positioned(
+            left: 16,
+            top: 4,
+            child: Text(
+              seatNum,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13),
+            )),
       ],
     );
   }
-}
-
-class SelectedSeatsScreen extends StatelessWidget {
-  final List<String> selectedSeats;
-
-  const SelectedSeatsScreen(this.selectedSeats, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Selected Seats"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Selected Seats:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(selectedSeats.join(", ")),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: SeatSelectionScreen(),
-  ));
 }

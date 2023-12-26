@@ -4,7 +4,6 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_ticket_project/Models/TicketModel.dart';
 import 'package:flutter_ticket_project/Views/TicketInfoView.dart';
 import 'package:flutter_ticket_project/Views/TicketPurchaseView.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class PaymentView extends StatelessWidget {
   final List<String> selectedSeats;

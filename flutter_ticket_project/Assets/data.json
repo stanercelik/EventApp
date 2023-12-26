@@ -1,0 +1,73 @@
+[
+    {
+      "eventPhoto": "Assets/Images/alting.jpg",
+      "eventName": "Altın Gün",
+      "eventLocationName": "Vodafone Arena",
+      "startDay": "13",
+      "startMonth": "Ocak",
+      "startYear": "2024",
+      "finishDay": "13",
+      "finishMonth": "Ocak",
+      "finishYear": "2024",
+      "eventTime": "14:00",
+      "eventType": "Konser",
+      "price": 150
+    },
+    {
+      "eventPhoto": "Assets/Images/mo.jpg",
+      "eventName": "Mahmut Orhan",
+      "eventLocationName": "Zorlu PSM",
+      "startDay": "01",
+      "startMonth": "Ocak",
+      "startYear": "2024",
+      "finishDay": "02",
+      "finishMonth": "Ocak",
+      "finishYear": "2024",
+      "eventTime": "20:00",
+      "eventType": "Konser",
+      "price": 350
+    },
+    {
+      "eventPhoto": "Assets/Images/bea.jpg",
+      "eventName": "Büyük Ev Ablukada",
+      "eventLocationName": "Hangout PSM",
+      "startDay": "20",
+      "startMonth": "Ara",
+      "startYear": "2023",
+      "finishDay": "21",
+      "finishMonth": "Ara",
+      "finishYear": "2023",
+      "eventTime": "20:00",
+      "eventType": "Konser",
+      "price": 320
+    },
+    {
+      "eventPhoto": "Assets/Images/eab_christmas.jpg",
+      "eventName": "Eats And Beats Christmas Bazaar",
+      "eventLocationName": "Hilltown Alışveriş Merkezi",
+      "startDay": "28",
+      "startMonth": "Ara",
+      "startYear": "2023",
+      "finishDay": "02",
+      "finishMonth": "Ocak",
+      "finishYear": "2024",
+      "eventTime": "20:00",
+      "eventType": "Festival",
+      "price": 220
+    },
+    {
+        "eventPhoto": "Assets/Images/radiohead.jpg",
+        "eventName": "Radiohead",
+        "eventLocationName": "Vodafone Arena",
+        "startDay": "09",
+        "startMonth": "Şub",
+        "startYear": "2024",
+        "finishDay": "10",
+        "finishMonth": "Şub",
+        "finishYear": "2024",
+        "eventTime": "23:00",
+        "eventType": "Konser",
+        "price": 750
+      }
+  ]
+  
